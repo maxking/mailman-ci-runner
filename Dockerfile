@@ -1,24 +1,19 @@
-FROM ubuntu:15.04
+FROM ubuntu:15.10
 
-RUN apt-get -y update && apt-get -y install python-pip python3.4 git openssh-server \
-    python-tox postgresql postgresql-client libpq-dev python3-dev python-dev
+RUN apt-get -y update && apt-get -y install python-pip python3.4 python3.5 git openssh-server \
+    postgresql postgresql-client libpq-dev python3-dev libsqlite3-dev libmysqlclient-dev
+
+RUN wget "https://bitbucket.org/hpk42/tox/get/87a9def32696.zip"
+RUN pip install 87a9def32696.zip
 
 RUN useradd runner --create-home
-
 RUN mkdir /builds
-
-RUN chown runner /builds 
-
+RUN chown runner /builds
 RUN mkdir /var/run/sshd
-
 RUN echo 'runner:runner' | chpasswd
-
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
-
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
-
 USER postgres
 
 RUN    /etc/init.d/postgresql start &&\
@@ -26,5 +21,6 @@ RUN    /etc/init.d/postgresql start &&\
     createdb -O mailman mailman &&\
     createdb -O mailman mailman_test
 
+USER root
 
-RUN which pg_config
+CMD ["/usr/sbin/sshd", "-D"]
