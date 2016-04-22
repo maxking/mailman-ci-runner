@@ -1,4 +1,4 @@
-FROM ubuntu:15.10
+FROM ubuntu:latest
 
 RUN apt-get -y update && apt-get -y install python-pip python3-pip python3.4 \ 
     python3.5 git openssh-server postgresql-client libpq-dev python3-dev \
