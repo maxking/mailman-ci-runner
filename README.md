@@ -1,10 +1,9 @@
-#About this Repo
+# About this Repo
 
 This is the docker image that is used to run ci-tests for mailman using
 Gitlab-CI. We use `docker` system to run tests inside the containers built
 from this image. For more information on how to use [gitlab-ci-multi-runner][1],
 refer to [this][2] documentation.
-
 
 ## How to build?
 
@@ -14,25 +13,14 @@ To build this image run:
 	$ docker build -t mailman-runner .
 ```
 
-## Gitlab CI Multi Runner Config
 
-This is the config (config.toml) used for the purpose of setting up the mailman-runner as a
-docker-ssh service for running tests.
+## How to use this image?
 
-*Note: This is not a full config, only relevant parts are shown here. It is
-recommended that you autogenerate the config using the `gitlab-ci-multi-runner register`
-command and use values from this config.*
-
-**This is outdated configuration**
-```
-[[runners]]
-  name = "<the runner name>"
-  url = "https://ci.gitlab.com"
-  token = "<the gitlab-ci token>"
-  executor = "docker"
-  [services] 
-```
-
+Just add the line `image: maxking/mailman-ci-runner` to the top of your
+`.gitlab-ci.yml` file. This will make sure this docker image is used to execute
+the tests. You can either use Gitlab's shared runners or deploy your own
+`gitlab-ci-multi-runner`. Please refer to Gitlab's documentation on how to
+deploy and configure it yourself.
 
 
 [1]: https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
