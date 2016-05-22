@@ -1,9 +1,9 @@
 #About this Repo
 
-This is the docker image that is used to run ci-tests for mailman using Gitlab-CI. We
-use `docker-ssh` system to run tests inside the containers built from this
-image. For more information on how to use [gitlab-ci-multi-runner][1], refer to
-[this][2] documentation.
+This is the docker image that is used to run ci-tests for mailman using
+Gitlab-CI. We use `docker` system to run tests inside the containers built
+from this image. For more information on how to use [gitlab-ci-multi-runner][1],
+refer to [this][2] documentation.
 
 
 ## How to build?
@@ -23,17 +23,14 @@ docker-ssh service for running tests.
 recommended that you autogenerate the config using the `gitlab-ci-multi-runner register`
 command and use values from this config.*
 
+**This is outdated configuration**
 ```
 [[runners]]
   name = "<the runner name>"
   url = "https://ci.gitlab.com"
   token = "<the gitlab-ci token>"
-  executor = "docker-ssh"
-  [runners.ssh]
-    user = "runner"
-    password = "runner"
-  [runners.docker]
-    image = "mailman-runner"
+  executor = "docker"
+  [services] 
 ```
 
 
