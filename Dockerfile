@@ -5,8 +5,8 @@ RUN apt-get -y update && apt-get -y install python-pip python3-pip \
     git openssh-server postgresql-client libpq-dev python3-dev \
     libsqlite3-dev libmysqlclient-dev libreadline-dev python-dev
 
-# Install latest version of tox for both python2 and python3
-RUN pip install tox
+
+# Install latest version of tox.
 RUN pip3 install tox
 
 # Add a new user
