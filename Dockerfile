@@ -25,9 +25,9 @@ RUN chown runner /builds
 
 # Download and compile the Python3.4 version.
 WORKDIR /tmp/
-RUN wget https://www.python.org/ftp/python/3.4.4/Python-3.4.4.tgz
-RUN tar xzf Python-3.4.4.tgz
-WORKDIR /tmp/Python-3.4.4
+RUN wget https://www.python.org/ftp/python/3.4.5/Python-3.4.5.tgz
+RUN tar xzf Python-3.4.5.tgz
+WORKDIR /tmp/Python-3.4.5
 RUN ./configure
 RUN make
 RUN make install
