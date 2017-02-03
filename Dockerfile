@@ -34,9 +34,9 @@ RUN make install
 
 # Download and compile Python 3.6
 WORKDIR /tmp/
-RUN wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0b4.tgz
-RUN tar xzf Python-3.6.0b4.tgz
-WORKDIR /tmp/Python-3.6.0b4
+RUN wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
+RUN tar xzf Python-3.6.0.tgz
+WORKDIR /tmp/Python-3.6.0
 RUN ./configure
 RUN make
 RUN make install
