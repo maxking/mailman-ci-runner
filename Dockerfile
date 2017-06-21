@@ -3,7 +3,8 @@ FROM ubuntu:16.04
 # Install the depdencies in the repo.
 RUN apt-get -y update && apt-get -y install python-pip python3-pip \
     git openssh-server postgresql-client libpq-dev python3-dev \
-    libsqlite3-dev libmysqlclient-dev libreadline-dev python-dev
+    libsqlite3-dev libmysqlclient-dev libreadline-dev libbz2-dev \
+    python-dev
 
 
 # Install latest version of tox.
