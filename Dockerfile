@@ -24,6 +24,8 @@ RUN chown runner /builds
 # ENV NOTVISIBLE "in users profile"
 # RUN echo "export VISIBLE=now" >> /etc/profile
 
+RUN export LC_ALL=c.UTF-8 && export LANG=c.UTF-8
+
 # Download and compile the Python3.4 version.
 WORKDIR /tmp/
 RUN wget https://www.python.org/ftp/python/3.4.5/Python-3.4.5.tgz
@@ -46,9 +48,7 @@ RUN make install
 COPY mysql.cfg postgres.cfg /home/runner/configs/
 
 # Change the permissions for configs directory.
-RUN chown -R runner:runner /home/runner/configs \
-    && export LC_ALL=c.UTF-8 \
-	&& export LANG=c.UTF-8
+RUN chown -R runner:runner /home/runner/configs
 
 # Switch to runner user and set the workdir
 USER runner
