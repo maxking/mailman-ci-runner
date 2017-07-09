@@ -24,7 +24,7 @@ RUN chown runner /builds
 # ENV NOTVISIBLE "in users profile"
 # RUN echo "export VISIBLE=now" >> /etc/profile
 
-RUN export LC_ALL=c.UTF-8 && export LANG=c.UTF-8
+RUN export LC_ALL=C.UTF-8 && export LANG=C.UTF-8
 
 # Download and compile the Python3.4 version.
 WORKDIR /tmp/
