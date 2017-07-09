@@ -46,7 +46,9 @@ RUN make install
 COPY mysql.cfg postgres.cfg /home/runner/configs/
 
 # Change the permissions for configs directory.
-RUN chown -R runner:runner /home/runner/configs
+RUN chown -R runner:runner /home/runner/configs \
+    && export LC_ALL=c.UTF-8 \
+	&& export LANG=c.UTF-8
 
 # Switch to runner user and set the workdir
 USER runner
