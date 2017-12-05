@@ -1,54 +1,38 @@
 FROM ubuntu:16.04
 
-# Install the depdencies in the repo.
-RUN apt-get -y update && apt-get -y install python-pip python3-pip \
-    git openssh-server postgresql-client libpq-dev python3-dev \
-    libsqlite3-dev libmysqlclient-dev libreadline-dev libbz2-dev \
-    python-dev
+# Change these variables to update the version of Python installed.
+ENV PYTHON_34_VER=3.4.7 \
+    PYTHON_35_VER=3.5.4 \
+    PYTHON_36_VER=3.6.3 \
+    PYTHON_27_VER=2.7.13 \
+    # Set debian front-end to non-interactive so that apt doesn't ask for
+    # prompts later.
+    DEBIAN_FRONTEND=noninteractive
 
+ADD get-pythons.sh /usr/local/bin/get-pythons.sh
 
-# Install latest version of tox.
-RUN pip3 install tox
-
+# Add a new layer to cache static stuff.
 # Add a new user
-RUN useradd runner --create-home
-
-# Create and change permissions for builds directory
-RUN mkdir /builds
-RUN chown runner /builds
-
-# Set password for runner user and make it visible for SSH
-# This section is probably not needed now, but it is required
-# if you need to SSH in using this user
-# RUN echo 'runner:runner' | chpasswd
-# ENV NOTVISIBLE "in users profile"
-# RUN echo "export VISIBLE=now" >> /etc/profile
-
-RUN export LC_ALL=C.UTF-8 && export LANG=C.UTF-8
-
-# Download and compile the Python3.4 version.
-WORKDIR /tmp/
-RUN wget https://www.python.org/ftp/python/3.4.5/Python-3.4.5.tgz
-RUN tar xzf Python-3.4.5.tgz
-WORKDIR /tmp/Python-3.4.5
-RUN ./configure
-RUN make
-RUN make install
-
-# Download and compile Python 3.6
-WORKDIR /tmp/
-RUN wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
-RUN tar xzf Python-3.6.0.tgz
-WORKDIR /tmp/Python-3.6.0
-RUN ./configure
-RUN make
-RUN make install
+RUN useradd runner --create-home \
+	# Create and change permissions for builds directory
+	&& mkdir /builds \
+	&& chown runner /builds \
+	&& export LC_ALL=C.UTF-8 && export LANG=C.UTF-8
 
 # Add the configuration files to the container.
 COPY mysql.cfg postgres.cfg /home/runner/configs/
 
 # Change the permissions for configs directory.
-RUN chown -R runner:runner /home/runner/configs
+RUN chown -R runner:runner /home/runner/configs \
+	# Install the depdencies in the repo.
+    && apt-get -y update && apt-get -y install python-pip python3-pip \
+    git openssh-server postgresql-client libpq-dev python3-dev \
+    libsqlite3-dev libmysqlclient-dev libreadline-dev libbz2-dev \
+    python-dev \
+	&& rm -rf /var/lib/apt/lists/* \
+	# Install latest version of tox.
+	&& pip3 install tox \
+	&& /usr/local/bin/get-pythons.sh \
 
 # Switch to runner user and set the workdir
 USER runner
