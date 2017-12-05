@@ -1,5 +1,10 @@
 FROM ubuntu:16.04
 
+# Enable source repositories so we can use `apt build-dep` to get all the
+# build dependencies for Python 2.7 and 3.5.
+RUN sed -i -- 's/#deb-src/deb-src/g' /etc/apt/sources.list && \
+    sed -i -- 's/# deb-src/deb-src/g' /etc/apt/sources.list
+
 # Change these variables to update the version of Python installed.
 ENV PYTHON_34_VER=3.4.7 \
     PYTHON_35_VER=3.5.4 \
@@ -29,6 +34,9 @@ RUN chown -R runner:runner /home/runner/configs \
     git openssh-server postgresql-client libpq-dev python3-dev \
     libsqlite3-dev libmysqlclient-dev libreadline-dev libbz2-dev \
     python-dev unzip \
+	# Install build dependencies for Python.
+	&& apt build-dep -y python2.7 && apt build-dep -y python3.5
+
 	&& rm -rf /var/lib/apt/lists/* \
 	# Install latest version of tox.
 	&& pip3 install tox \
