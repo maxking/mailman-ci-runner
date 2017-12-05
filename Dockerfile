@@ -32,7 +32,7 @@ RUN chown -R runner:runner /home/runner/configs \
 	&& rm -rf /var/lib/apt/lists/* \
 	# Install latest version of tox.
 	&& pip3 install tox \
-	&& /usr/local/bin/get-pythons.sh \
+	&& /usr/local/bin/get-pythons.sh
 
 # Switch to runner user and set the workdir
 USER runner
