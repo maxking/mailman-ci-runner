@@ -28,7 +28,7 @@ RUN chown -R runner:runner /home/runner/configs \
     && apt-get -y update && apt-get -y install python-pip python3-pip \
     git openssh-server postgresql-client libpq-dev python3-dev \
     libsqlite3-dev libmysqlclient-dev libreadline-dev libbz2-dev \
-    python-dev \
+    python-dev unzip \
 	&& rm -rf /var/lib/apt/lists/* \
 	# Install latest version of tox.
 	&& pip3 install tox \
