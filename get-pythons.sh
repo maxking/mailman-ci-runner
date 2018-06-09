@@ -20,6 +20,18 @@ get_install () {
 }
 
 
+get_install_beta () {
+	DOWNLOAD_URL=https://www.python.org/ftp/python/3.7.0/Python-3.7.0b5.tgz
+	cd /tmp
+	wget $DOWNLOAD_URL
+	tar xzf Python-3.7.0b5.tgz
+	cd /tmp/Python-3.7.0b5
+	./configure && make && make altinstall
+	cd /tmp
+	rm Python-3.7.0b5.tgz && rm -r Python-3.7.0b5
+}
+
+
 # First, get and install Python 3.7 from the latest git install.
 cd  /tmp/
 wget https://github.com/python/cpython/archive/master.zip
@@ -33,6 +45,7 @@ rm -r /tmp/cpython-master && rm /tmp/master.zip
 get_install $PYTHON_34_VER
 get_install $PYTHON_35_VER
 get_install $PYTHON_36_VER
+get_install_beta
 
 # After we have installed all the things, we cleanup tests and unused files
 # like .pyc and .pyo
