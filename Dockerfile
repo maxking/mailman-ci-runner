@@ -8,7 +8,7 @@ RUN sed -i -- 's/#deb-src/deb-src/g' /etc/apt/sources.list && \
 # Change these variables to update the version of Python installed.
 ENV PYTHON_34_VER=3.4.8 \
     PYTHON_35_VER=3.5.5 \
-    PYTHON_36_VER=3.6.4 \
+    PYTHON_36_VER=3.6.6 \
 	PYTHON_37_VER=3.7.0 \
     PYTHON_27_VER=2.7.15 \
     # Set debian front-end to non-interactive so that apt doesn't ask for
