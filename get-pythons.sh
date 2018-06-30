@@ -45,7 +45,7 @@ rm -r /tmp/cpython-master && rm /tmp/master.zip
 get_install $PYTHON_34_VER
 get_install $PYTHON_35_VER
 get_install $PYTHON_36_VER
-get_install_beta
+get_install $PYTHON_37_VER
 
 # After we have installed all the things, we cleanup tests and unused files
 # like .pyc and .pyo
