@@ -37,7 +37,7 @@ RUN chown -R runner:runner /home/runner/configs \
     libsqlite3-dev libmysqlclient-dev libreadline-dev libbz2-dev \
     python-dev unzip \
 	# Install build dependencies for Python.
-	&& apt build-dep -y python2.7 && apt build-dep -y python3.5 \
+	&& apt build-dep -y python2.7 && apt build-dep -y python3.6 \
 	&& rm -rf /var/lib/apt/lists/* \
 	# Install latest version of tox.
 	&& pip3 install tox \
