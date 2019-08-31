@@ -9,7 +9,7 @@ RUN sed -i -- 's/#deb-src/deb-src/g' /etc/apt/sources.list && \
 ENV PYTHON_34_VER=3.4.9 \
     PYTHON_35_VER=3.5.7 \
     PYTHON_36_VER=3.6.9 \
-    PYTHON_37_VER=3.7.5 \
+    PYTHON_37_VER=3.7.4 \
     PYTHON_27_VER=2.7.16 \
     PYTHON_38_VER=3.8.0b3 \
     # Set debian front-end to non-interactive so that apt doesn't ask for
