@@ -47,7 +47,7 @@ get_install $PYTHON_34_VER
 get_install $PYTHON_35_VER
 get_install $PYTHON_36_VER
 get_install $PYTHON_37_VER
-get_install $PYTHON_38_VER 3.8.0
+get_install $PYTHON_38_VER
 
 # After we have installed all the things, we cleanup tests and unused files
 # like .pyc and .pyo
