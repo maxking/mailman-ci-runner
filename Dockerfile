@@ -7,7 +7,7 @@ RUN sed -i -- 's/#deb-src/deb-src/g' /etc/apt/sources.list && \
 
 # Change these variables to update the version of Python installed.
 ENV PYTHON_34_VER=3.4.9 \
-    PYTHON_35_VER=3.5.7 \
+    PYTHON_35_VER=3.5.9 \
     PYTHON_36_VER=3.6.9 \
     PYTHON_37_VER=3.7.5 \
     PYTHON_27_VER=2.7.17 \
