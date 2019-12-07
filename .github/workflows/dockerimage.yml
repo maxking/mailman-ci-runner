@@ -13,6 +13,8 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag maxking/mailman-ci-runner:latest
     - name: DockerHub login
-      run: docker login -u="maxking" -p="{{ secrets.CI_JOB_TOKEN }}"
+      env:
+        CI_JOB_TOKEN: ${{ secrets.CI_JOB_TOKEN }}
+      run: docker login -u="maxking" -p="$CI_JOB_TOKEN"
     - name: Push the Docker image
       run: docker push maxking/mailman-ci-runner:latest
