@@ -2,6 +2,9 @@ FROM quay.io/python-devs/ci-image:master
 
 USER root
 
+# Needed for cryptography package.
+RUN apt update && apt install rustc
+
 # Add the configuration files to the container.
 COPY mysql.cfg postgres.cfg /home/runner/configs/
 
