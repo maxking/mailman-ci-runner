@@ -1,4 +1,4 @@
-FROM quay.io/python-devs/ci-image:master
+FROM quay.io/python-devs/ci-image:latest
 
 USER root
 
