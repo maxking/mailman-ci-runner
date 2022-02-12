@@ -1,4 +1,4 @@
-FROM quay.io/python-devs/ci-image:latest
+FROM registry.gitlab.com/python-devs/ci-images:latest
 
 USER root
 
