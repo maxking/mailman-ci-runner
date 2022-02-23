@@ -70,7 +70,7 @@ jobs:
 
 
       - name: Set the USER directive to root.
-        run: echo "\nUSER root\n" >> Dockerfile
+        run: echo "USER root" >> Dockerfile
 
 
       # Build and push Docker image with Buildx (don't push on PR)
