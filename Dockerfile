@@ -7,6 +7,8 @@ RUN apt update --yes && apt install --yes rustc
 
 # Add the configuration files to the container.
 COPY mysql.cfg postgres.cfg /home/runner/configs/
+# Add default git configuration.
+COPY .gitconfig /home/runner
 
 # Change the permissions for configs directory.
 RUN chown -R runner:runner /home/runner/configs \
