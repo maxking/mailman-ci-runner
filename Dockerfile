@@ -16,7 +16,8 @@ RUN chown -R runner:runner /home/runner/configs \
     && apt-get -y update && apt-get -y install python3-pip \
     openssh-server postgresql-client libpq-dev python3-dev \
     libsqlite3-dev libmysqlclient-dev libreadline-dev libbz2-dev \
-    nano
+    nano \
+    && git config --global --add safe.directory '*'
 # Switch to runner user and set the workdir
 USER runner
 WORKDIR /home/runner
