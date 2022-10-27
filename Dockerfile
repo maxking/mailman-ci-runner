@@ -20,4 +20,7 @@ RUN chown -R runner:runner /home/runner/configs \
     && git config --global --add safe.directory '*'
 # Switch to runner user and set the workdir
 USER runner
+
+RUN git config --global --add safe.directory '*'
+
 WORKDIR /home/runner
