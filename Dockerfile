@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/python-devs/ci-images:latest
+FROM registry.gitlab.com/python-devs/ci-images:active
 
 USER root
 
