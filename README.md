@@ -40,6 +40,5 @@ the tests. You can either use Gitlab's shared runners or deploy your own
 `gitlab-ci-multi-runner`. Please refer to Gitlab's documentation on how to
 deploy and configure it yourself.
 
-
 [1]: https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
 [2]: https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/configuration/advanced-configuration.md
