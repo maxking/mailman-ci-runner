@@ -18,8 +18,12 @@ RUN chown -R runner:runner /home/runner/configs \
     libsqlite3-dev libmysqlclient-dev libreadline-dev libbz2-dev \
     nano \
     && git config --global --add safe.directory '*'
+
+
 # Switch to runner user and set the workdir
 USER runner
+
+RUN pip install --break-system-packages tox-uv
 
 RUN git config --global --add safe.directory '*'
 
