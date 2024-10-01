@@ -19,9 +19,11 @@ RUN chown -R runner:runner /home/runner/configs \
     nano \
     && git config --global --add safe.directory '*'
 
-RUN pip install --break-system-packages tox-uv
+
 # Switch to runner user and set the workdir
 USER runner
+
+RUN pip install --break-system-packages tox-uv
 
 RUN git config --global --add safe.directory '*'
 
