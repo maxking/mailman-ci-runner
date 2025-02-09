@@ -10,7 +10,7 @@ refer to [this][2] documentation.
 To build this image run:
 
 ```bash
-	$ docker build -t mailman-runner .
+$ docker build -t mailman-runner .
 ```
 
 ## Images
